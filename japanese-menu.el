@@ -1,5 +1,11 @@
 ;;; japanese-menu.el --- Japanese menu translation -*- lexical-binding: t; -*-
 
+;; Author: yt-emacs-ja
+;; Version: 0.1.0
+;; Package-Requires: ((emacs "27.1"))
+;; Keywords: convenience, i18n, gui
+;; URL: https://github.com/yt-emacs-ja/emacs-japanese-menu
+
 ;;; Commentary:
 ;; Translate Emacs GUI menu labels into Japanese by rewriting menu keymaps.
 ;; Also translates popup menus (x-popup-menu / popup-menu) using a translated
