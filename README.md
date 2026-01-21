@@ -73,6 +73,13 @@ Debian build (2025-08-28)
 必要に応じて辞書を追加してください
 
 
+---
+
+## Links
+
+- GitHub repository: https://github.com/yt-emacs-ja/emacs-japanese-menu
+- GitHub Releases: https://github.com/yt-emacs-ja/emacs-japanese-menu/releases
+- EmacsWiki: https://www.emacswiki.org/emacs/japanese-menu
 
 
 
