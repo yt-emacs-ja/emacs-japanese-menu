@@ -1,6 +1,8 @@
 ;;; japanese-menu.el --- Japanese menu translation -*- lexical-binding: t; -*-
 
-;; Author: yt-emacs-ja
+;; Author: yt-emacs-ja <https://github.com/yt-emacs-ja>
+;; SPDX-License-Identifier: GPL-3.0-or-later
+;; License: GPL-3.0-or-later
 ;; Version: 0.1.0
 ;; Package-Requires: ((emacs "27.1"))
 ;; Keywords: convenience, i18n, gui
@@ -735,15 +737,14 @@
     ("Indent or Pretty-Print" . "インデント／整形表示")
     ("Instrument Function for Debugging" . "デバッグ用に関数を計測")
     ("Evaluate and Print" . "評価して表示")
-    ("Evaluate Defun" . "関数定義を評価")
-    )
+    ("Evaluate Defun" . "関数定義を評価") )
   "English menu label -> Japanese label.")
 
 ;; =========================================================
 ;; Normalizer / lookup
 ;; =========================================================
 (defun japanese-menu--norm-label (s)
-  "Normalize label so '...' and '…' differences don't matter."
+  "Normalize S label so '...' and '…' differences don't matter."
   (when (stringp s)
     (let ((x (string-trim s)))
       (setq x (replace-regexp-in-string "…" "..." x t t))
@@ -809,14 +810,14 @@
 ;; Translate global + local menubars
 ;; =========================================================
 (defun japanese-menu-translate-global-menubar (&optional frame)
-  "Translate global menu-bar keymap."
+  "Translate global menu-bar keymap in FRAME (or the selected frame)."
   (with-selected-frame (or frame (selected-frame))
     (let ((mb (lookup-key global-map [menu-bar])))
       (when (japanese-menu--as-keymap mb)
         (japanese-menu--walk-keymap mb)))))
 
 (defun japanese-menu-translate-current-menubar (&optional frame)
-  "Translate global + current buffer's local menu bar."
+  "Translate global + current buffer's local menu bar in FRAME (or the selected frame)."
   (with-selected-frame (or frame (selected-frame))
     (ignore-errors (japanese-menu-translate-global-menubar))
     (let* ((lm (current-local-map))
@@ -887,13 +888,13 @@
 
       (when (fboundp 'x-popup-menu)
         (advice-add
-         'x-popup-menu :around
+        #'x-popup-menu :around
          (lambda (orig event menu &rest args)
            (apply orig event (japanese-menu--translate-menu-copy menu) args))))
 
       (when (fboundp 'popup-menu)
         (advice-add
-         'popup-menu :around
+         #'popup-menu :around
          (lambda (orig menu &rest args)
            (apply orig (japanese-menu--translate-menu-copy menu) args))))))
 
