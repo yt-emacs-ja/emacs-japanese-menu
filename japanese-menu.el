@@ -817,8 +817,9 @@
         (japanese-menu--walk-keymap mb)))))
 
 (defun japanese-menu-translate-current-menubar (&optional frame)
-  "Translate global + current buffer's local menu bar in FRAME (or the selected frame)."
-  (with-selected-frame (or frame (selected-frame))
+  "Translate global and current buffer's local menu bar in FRAME
+(or the selected frame)."
+(with-selected-frame (or frame (selected-frame))
     (ignore-errors (japanese-menu-translate-global-menubar))
     (let* ((lm (current-local-map))
            (mb (and (keymapp lm) (lookup-key lm [menu-bar]))))
