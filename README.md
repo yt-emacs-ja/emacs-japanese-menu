@@ -1,5 +1,10 @@
 # japanese-menu.el (Emacs GUI menu Japanese translation)
 
+## License
+
+This package is licensed under GPL-3.0-or-later.
+
+
 EmacsのGUIメニュー（メニューバー / プルダウン / 右クリック等）を、
 英語ラベル → 日本語ラベルの辞書で置換します。  
 Debian / Ubuntu の Emacs（GUI）を主対象としています。
