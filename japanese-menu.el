@@ -811,8 +811,8 @@
         (japanese-menu--walk-keymap mb)))))
 
 (defun japanese-menu-translate-current-menubar (&optional frame)
-  "Translate global and current buffer's local menu bar.
-If FRAME is non-nil,translate that frame instead."
+  "Translate global and current buffer local menu bar.
+If FRAME is nil, use the selected frame."
 (or the selected frame)."
 (with-selected-frame (or frame (selected-frame))
     (ignore-errors (japanese-menu-translate-global-menubar))
