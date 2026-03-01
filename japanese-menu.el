@@ -4,19 +4,13 @@
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; License: GPL-3.0-or-later
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "27.1"))
-;; Keywords: convenience, i18n, gui
+;; Package-Requires: ((emacs "26.1"))
+;; Keywords: convenience, japanese, menu
 ;; URL: https://github.com/yt-emacs-ja/emacs-japanese-menu
 
 ;;; Commentary:
-;; Translate Emacs GUI menu labels into Japanese by rewriting menu keymaps.
-;; Also translates popup menus (x-popup-menu / popup-menu) using a translated
-;; deep copy so originals are not mutated.
-;;
-;; Usage:
-;;   (add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp/"))
-;;   (require 'japanese-menu)
-;;   (japanese-menu-setup)
+;; Japanese translation for Emacs GUI menus.
+
 
 ;;; Code:
 
@@ -905,3 +899,5 @@
 
 (provide 'japanese-menu)
 ;;; japanese-menu.el ends here
+
+
