@@ -901,3 +901,5 @@
 ;;; japanese-menu.el ends here
 
 
+
+
