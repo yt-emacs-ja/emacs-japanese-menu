@@ -813,7 +813,6 @@
 (defun japanese-menu-translate-current-menubar (&optional frame)
   "Translate global and current buffer local menu bar.
 If FRAME is nil, use the selected frame."
-(or the selected frame)."
 (with-selected-frame (or frame (selected-frame))
     (ignore-errors (japanese-menu-translate-global-menubar))
     (let* ((lm (current-local-map))
