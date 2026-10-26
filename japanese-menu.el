@@ -814,11 +814,11 @@
   "Translate global and current buffer local menu bar.
 If FRAME is nil, use the selected frame."
 (with-selected-frame (or frame (selected-frame))
-    (ignore-errors (japanese-menu-translate-global-menubar))
+    (japanese-menu-translate-global-menubar)
     (let* ((lm (current-local-map))
            (mb (and (keymapp lm) (lookup-key lm [menu-bar]))))
       (when (japanese-menu--as-keymap mb)
-        (ignore-errors (japanese-menu--walk-keymap mb))))))
+        (japanese-menu--walk-keymap mb)))))
 
 ;; =========================================================
 ;; Popup menu translation (does NOT mutate originals)
@@ -853,7 +853,7 @@ If FRAME is nil, use the selected frame."
 (defun japanese-menu--translate-menu-copy (menu)
   "Return translated deep copy of MENU."
   (let ((m (copy-tree menu t)))
-    (ignore-errors (japanese-menu--translate-menu-obj m))
+    (japanese-menu--translate-menu-obj m)
     m))
 
 (defvar japanese-menu--advice-installed nil)
@@ -863,7 +863,7 @@ If FRAME is nil, use the selected frame."
 ;; =========================================================
 (defun japanese-menu-setup ()
   "Install hooks/advice to translate menus."
-  (with-eval-after-load 'menu-bar
+  
     ;; グローバル側のトップ \"Info\" を消して、Info-mode側だけにする
     (when (lookup-key global-map [menu-bar info])
       (define-key global-map [menu-bar info] nil))
@@ -885,7 +885,7 @@ If FRAME is nil, use the selected frame."
         (advice-add
         #'x-popup-menu :around
          (lambda (orig event menu &rest args)
-           (apply orig event (japanese-menu--translate-menu-copy menu) args))))
+           (apply orig event (japanese-menu--translate-menu-copy menu) args)))
 
       (when (fboundp 'popup-menu)
         (advice-add
@@ -894,8 +894,11 @@ If FRAME is nil, use the selected frame."
            (apply orig (japanese-menu--translate-menu-copy menu) args))))))
 
   ;; Info-mode はローカルメニューが多いので入った瞬間にも一回
-  (with-eval-after-load 'info
-    (add-hook 'Info-mode-hook #'japanese-menu-translate-current-menubar)))
+  
+    (add-hook 'Info-mode-hook #'japanese-menu-translate-current-menubar)
+
+  ;; セットアップ時にも現在のメニューを翻訳
+    (japanese-menu-translate-current-menubar))
 
 (provide 'japanese-menu)
 ;;; japanese-menu.el ends here
