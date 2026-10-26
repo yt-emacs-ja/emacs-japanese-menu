@@ -1,6 +1,7 @@
 ;;; japanese-menu.el --- Japanese menu translation -*- lexical-binding: t; -*-
 
 ;; Author: yt-emacs-ja <https://github.com/yt-emacs-ja>
+;; Assisted-by: ChatGPT:GPT-6
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; License: GPL-3.0-or-later
 ;; Version: 0.1.0
